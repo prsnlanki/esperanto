@@ -2,7 +2,7 @@
 
 My Esperanto deck, for an intermediate speaker going further: the 2,000 most common verbs, expressions and proverbs, and beyond the basics: word building, precise vocabulary, the small words and the grammar points where speakers of Spanish, English and German go wrong. 2,402 notes (4,032 cards) in `Languages::Esperanto`, one subdeck per kind of card, with audio.
 
-**Import:** download [`Esperanto.apkg`](https://github.com/ntfifwyb/anki-setup/releases/download/esperanto-2.1.0/Esperanto.apkg) from the deck's [release](https://github.com/ntfifwyb/anki-setup/releases/tag/esperanto-2.1.0) (version 2.1.0; [all versions](https://github.com/ntfifwyb/anki-setup/releases), [changelog](CHANGELOG.md)) and open it with Anki (or **File → Import**). It adds or updates every subdeck at once, with its audio. Notes keep stable IDs, so re-importing updates existing cards instead of duplicating them.
+**Import:** download [`Esperanto.apkg`](https://github.com/prsnlanki/esperanto/releases/download/v2.1.0/Esperanto.apkg) from the deck's [release](https://github.com/prsnlanki/esperanto/releases/tag/v2.1.0) (version 2.1.0; [all versions](https://github.com/prsnlanki/esperanto/releases), [changelog](CHANGELOG.md)) and open it with Anki (or **File → Import**). It adds or updates every subdeck at once, with its audio. Notes keep stable IDs, so re-importing updates existing cards instead of duplicating them.
 
 ## Subdecks
 
@@ -19,18 +19,18 @@ Verboj comes from the 2000-verb list in my study notes, with its sentences (corr
 
 ## Audio
 
-None of the voices of the [Psittacus](https://github.com/ntfifwyb/psittacus) add-on speaks Esperanto, so this deck has its own: [eSpeak NG](https://github.com/espeak-ng/espeak-ng)'s `eo` voice. It is robotic, but reads Esperanto by its own rules (ĉ, ĝ, ĥ, ĵ, ŝ, ŭ, stress on the next-to-last syllable). Every example sentence is spoken, every verb, and the word or proverb on the other notes with a *Rekoni* card. Ordinary MP3s in `audio/`, shared by every subdeck, named as Psittacus names its clips, so they play on desktop, AnkiDroid and AnkiMobile without any add-on.
+None of the voices of the [Psittacus](https://github.com/prsnlanki/psittacus) add-on speaks Esperanto, so this deck has its own: [eSpeak NG](https://github.com/espeak-ng/espeak-ng)'s `eo` voice. It is robotic, but reads Esperanto by its own rules (ĉ, ĝ, ĥ, ĵ, ŝ, ŭ, stress on the next-to-last syllable). Every example sentence is spoken, every verb, and the word or proverb on the other notes with a *Rekoni* card. Ordinary MP3s in `audio/`, shared by every subdeck, named as Psittacus names its clips, so they play on desktop, AnkiDroid and AnkiMobile without any add-on.
 
 ## Editing and rebuilding
 
-Each publish is a new version on the releases page, tagged `esperanto-x.y.z`: a major version when importing it needs a step in Anki (a renamed deck, say), a minor one for new cards, a patch for fixes. Before publishing, add the version and what changed to [`CHANGELOG.md`](CHANGELOG.md) and point the download link above at it; `scripts/check-release-links.sh` (part of `.local-ci`) fails until the links match. `scripts/publish-deck.sh esperanto` then builds the `.apkg` and creates the release, with that changelog section as its notes.
+Each publish is a new version on the releases page, tagged `vx.y.z`: a major version when importing it needs a step in Anki (a renamed deck, say), a minor one for new cards, a patch for fixes. Before publishing, add the version and what changed to [`CHANGELOG.md`](CHANGELOG.md) and point the download link above at it; `scripts/check-release-links.sh` (part of `.local-ci`) fails until the links match. `scripts/publish.sh` then builds the `.apkg` and creates the release, with that changelog section as its notes.
 
 1. Edit the subdeck's data (see its README).
 2. Make the audio for new or changed text (it needs the Psittacus submodule for the clip names, `git submodule update --init`); clips already in `audio/` are skipped. eSpeak NG comes from the `espeakng-loader` package, so nothing needs installing system-wide:
    ```
    uv run --no-project -p 3.13 --with genanki==0.13.1 --with espeakng-loader==0.2.4 --with soundfile==0.13.1 --with numpy python speak.py
    ```
-3. Add a version to [`CHANGELOG.md`](CHANGELOG.md) (see above), commit, and once merged run `scripts/publish-deck.sh esperanto` from the repository root. `build.py` packages every subdeck in `PARTS` into `Esperanto.apkg` (each subdeck's `build.py` stops on a malformed line or a duplicate, and `common.py` on a missing clip).
+3. Add a version to [`CHANGELOG.md`](CHANGELOG.md) (see above), commit, and once merged run `scripts/publish.sh` from the repository root. `build.py` packages every subdeck in `PARTS` into `Esperanto.apkg` (each subdeck's `build.py` stops on a malformed line or a duplicate, and `common.py` on a missing clip).
 4. Re-import the new `.apkg`. A note's ID comes from its word (or, in Gramatiko, its correct sentence), so changing that gives it a new ID; changing anything else updates it in place.
 
 `common.py` holds what the subdecks share: the data parser, the card style and the clip names. To add a new kind of card, add a folder with a `build.py` whose `rows()` returns its notes, and list it in `PARTS`.

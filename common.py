@@ -20,7 +20,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = "Languages::Esperanto"
 AUDIO = os.path.join(HERE, "audio")
 LANG = "eo"
-PSITTACUS = os.path.join(HERE, "..", "..", "addons", "psittacus", "addon")
+PSITTACUS = os.path.join(HERE, "psittacus", "addon")
 # The engine and voice data that name the clips (Psittacus's cache_name) and that speak.py speaks with.
 ENGINE, VOICE = "espeak", {"voice": "eo"}
 

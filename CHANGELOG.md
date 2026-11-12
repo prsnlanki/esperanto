@@ -1,6 +1,6 @@
 # Changelog
 
-Each version is a release tagged `esperanto-x.y.z` on the [releases page](https://github.com/ntfifwyb/anki-setup/releases). Major: importing it needs a step in Anki. Minor: new cards. Patch: fixes.
+Each version is a release tagged `vx.y.z` on the [releases page](https://github.com/prsnlanki/esperanto/releases). Major: importing it needs a step in Anki. Minor: new cards. Patch: fixes.
 
 ## 2.1.0 (2026-11-03)
 

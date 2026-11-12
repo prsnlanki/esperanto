@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.apkg
+
+# Source spreadsheets hold personal notes; their data is extracted into the subdeck folders
+*.xlsx
+*:Zone.Identifier

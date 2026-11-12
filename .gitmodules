@@ -1,0 +1,3 @@
+[submodule "psittacus"]
+	path = psittacus
+	url = https://github.com/prsnlanki/psittacus
